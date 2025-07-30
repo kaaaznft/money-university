@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お金の大学 - お金の仕組みを楽しく学ぼう</title>
+    <meta name="description" content="通貨と税金の仕組みをわかりやすく学べる教育サイト。初心者にも理解しやすい解説と楽しい計算機能を提供します。">
+    <meta name="keywords" content="通貨,税金,仕組み,学習,教育,ファイナンス">
+    
+    <!-- OGP Tags -->
+    <meta property="og:title" content="お金の大学 - お金の仕組みを楽しく学ぼう">
+    <meta property="og:description" content="通貨と税金の仕組みをわかりやすく学べる教育サイト">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="#">
+    <meta property="og:image" content="./images/og-image.jpg">
+    <meta property="og:site_name" content="お金の大学">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="お金の大学 - お金の仕組みを楽しく学ぼう">
+    <meta name="twitter:description" content="通貨と税金の仕組みをわかりやすく学べる教育サイト">
+    <meta name="twitter:image" content="./images/og-image.jpg">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+    <h1>🎓 お金の大学</h1>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#" class="nav-link mode-link" data-mode="all" id="mode-all">すべて</a>
+                    <a href="#" class="nav-link mode-link" data-mode="currency" id="mode-currency">通貨を学ぶ</a>
+                    <a href="#" class="nav-link mode-link" data-mode="tax" id="mode-tax">税金を学ぶ</a>
+                    <a href="#" class="nav-link mode-link" data-mode="investment" id="mode-investment">投資を学ぶ</a>
+                    <a href="#" class="nav-link mode-link" data-mode="glossary" id="mode-glossary">単語帳</a>
+                    <a href="#calculator" class="nav-link">便利ツール</a>
+                    <a href="#quiz" class="nav-link">クイズ</a>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="ダークモード切り替え">🌙</button>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">通貨と税金の仕組みを<br>楽しく学ぼう！</h1>
+                    <p class="hero-description">初心者にもわかりやすい解説と楽しい計算機能で、お金の基本知識を身につけましょう。</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="setLearningMode('currency')">通貨を学ぶ</button>
+                        <button class="btn btn-secondary" onclick="setLearningMode('tax')">税金を学ぶ</button>
+                        <button class="btn btn-primary" onclick="setLearningMode('investment')">投資を学ぶ</button>
+                        <button class="btn btn-accent" onclick="setLearningMode('glossary')">単語帳</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="money-icon">💱</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Currency Section -->
+        <section id="currency" class="section currency-content">
+            <div class="container">
+                <h2 class="section-title">通貨の仕組み</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">💴</div>
+                        <h3>通貨とは？</h3>
+                        <p>通貨は商品やサービスの交換手段として使われるお金のことです。円、ドル、ユーロなど世界には様々な通貨があります。</p>
+                        <button class="card-btn" onclick="openModal('currency-detail-1-modal')">詳しく見る</button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">📈</div>
+                        <h3>為替レート</h3>
+                        <p>異なる通貨を交換する際の比率を為替レートといいます。経済状況によって日々変動しています。</p>
+                        <button class="card-btn" onclick="openModal('currency-detail-2-modal')">詳しく見る</button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🏦</div>
+                        <h3>中央銀行の役割</h3>
+                        <p>中央銀行は通貨の発行や金融政策を担当し、経済の安定を図る重要な機関です。</p>
+                        <button class="card-btn" onclick="openModal('currency-detail-3-modal')">詳しく見る</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- World Currency Section -->
+        <section id="world-currency" class="section section-alt currency-content">
+            <div class="container">
+                <h2 class="section-title">世界の代表的な通貨</h2>
+                <div class="currency-explorer">
+                    <p class="section-description">世界各国で使われている主要な通貨をチェックしてみましょう！</p>
+                    <div class="currency-grid" id="currency-grid">
+                        <!-- JavaScriptで動的に生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Section -->
+        <section id="investment" class="section investment-content">
+            <div class="container">
+                <h2 class="section-title">投資の基本</h2>
+                <div class="investment-overview">
+                    <p class="section-description">投資は将来の資産形成において重要な手段です。リスクとリターンの関係を理解し、長期的な視点で資産を育てましょう。</p>
+                </div>
+                
+                <!-- Investment Basics -->
+                <div class="investment-category">
+                    <h3 class="category-title">📈 投資の基本概念</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">💰</div>
+                            <h3>リスクとリターン</h3>
+                            <p>投資におけるリスクとリターンは表裏一体です。一般的に高いリターンを求めると高いリスクを伴います。</p>
+                            <button class="card-btn" onclick="openModal('risk-return-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">🎯</div>
+                            <h3>分散投資</h3>
+                            <p>「卵を一つのかごに盛るな」という格言のように、投資先を分散することでリスクを軽減できます。</p>
+                            <button class="card-btn" onclick="openModal('diversification-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">⏰</div>
+                            <h3>複利の力</h3>
+                            <p>アインシュタインが「人類最大の発明」と呼んだ複利。時間を味方につけることで大きな効果を発揮します。</p>
+                            <button class="card-btn" onclick="openModal('compound-interest-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">📊</div>
+                            <h3>長期投資</h3>
+                            <p>短期的な値動きに惑わされず、長期的な視点で投資することで、市場の成長を享受できます。</p>
+                            <button class="card-btn" onclick="openModal('long-term-investment-detail-modal')">詳しく見る</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Investment Products -->
+                <div class="investment-category">
+                    <h3 class="category-title">🏦 主な投資商品</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">📈</div>
+                            <h3>株式投資</h3>
+                            <p>企業の株式を購入し、その企業の成長とともに利益を得る投資方法です。配当金も期待できます。</p>
+                            <button class="card-btn" onclick="openModal('stock-investment-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">🏛️</div>
+                            <h3>債券投資</h3>
+                            <p>国や企業が発行する債券を購入し、定期的な利息収入と満期時の元本返済を受ける投資です。</p>
+                            <button class="card-btn" onclick="openModal('bond-investment-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">📦</div>
+                            <h3>投資信託・ETF</h3>
+                            <p>多くの投資家から資金を集めて、専門家が株式や債券に投資する商品です。少額から分散投資が可能です。</p>
+                            <button class="card-btn" onclick="openModal('mutual-fund-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">🏠</div>
+                            <h3>不動産投資</h3>
+                            <p>実物不動産やREIT（不動産投資信託）を通じて、不動産市場に投資する方法です。</p>
+                            <button class="card-btn" onclick="openModal('real-estate-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">₿</div>
+                            <h3>暗号通貨（仮想通貨）</h3>
+                            <p>ブロックチェーン技術を使用したデジタル通貨。高いボラティリティを持つハイリスク・ハイリターン投資です。</p>
+                            <button class="card-btn" onclick="openModal('crypto-detail-modal')">詳しく見る</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tax-Advantaged Accounts -->
+                <div class="investment-category">
+                    <h3 class="category-title">🎁 税制優遇制度</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">🎯</div>
+                            <h3>NISA（ニーサ）</h3>
+                            <p>2024年から始まった新しいNISA制度。投資で得た利益が非課税になる制度です。</p>
+                            <button class="card-btn" onclick="openModal('nisa-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">👨‍🦳</div>
+                            <h3>iDeCo（イデコ）</h3>
+                            <p>個人型確定拠出年金。60歳まで引き出せませんが、税制優遇が手厚い制度です。</p>
+                            <button class="card-btn" onclick="openModal('ideco-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">🏢</div>
+                            <h3>企業型確定拠出年金（企業型DC）</h3>
+                            <p>企業が従業員のために実施する確定拠出年金制度。マッチング拠出により従業員も拠出可能です。</p>
+                            <button class="card-btn" onclick="openModal('dc-detail-modal')">詳しく見る</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tax Section -->
+        <section id="tax" class="section tax-content">
+            <div class="container">
+                <h2 class="section-title">日本の税金制度</h2>
+                <div class="tax-overview">
+                    <p class="section-description">日本では国税と地方税を合わせて約50種類の税金があります。私たちの生活に関わる主要な税金について詳しく学びましょう。</p>
+                </div>
+                
+                <!-- National Taxes -->
+                <div class="tax-category">
+                    <h3 class="category-title">🏛️ 国税（国に納める税金）</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">💰</div>
+                            <h3>所得税</h3>
+                            <p>個人の所得に対してかかる税金。様々な所得区分があり、それぞれ計算方法が異なります。累進課税制度を採用。</p>
+                            <button class="card-btn" onclick="openIncomeTaxModal()">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">🛒</div>
+                            <h3>消費税</h3>
+                            <p>商品やサービスの購入時にかかる税金。標準税率10%、軽減税率8%が適用されます。</p>
+                            <button class="card-btn" onclick="openModal('consumption-tax-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">🏢</div>
+                            <h3>法人税</h3>
+                            <p>会社などの法人の所得に対してかかる税金。中小法人と大法人で税率が異なります。</p>
+                            <button class="card-btn" onclick="openModal('corporate-tax-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">💎</div>
+                            <h3>相続税・贈与税</h3>
+                            <p>相続や贈与により財産を取得した場合にかかる税金。基礎控除額を超える部分が課税対象。</p>
+                            <button class="card-btn" onclick="openModal('inheritance-tax-detail-modal')">詳しく見る</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Local Taxes -->
+                <div class="tax-category">
+                    <h3 class="category-title">🏘️ 地方税（都道府県・市区町村に納める税金）</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">🏠</div>
+                            <h3>住民税</h3>
+                            <p>住んでいる地域に納める税金。所得割と均等割から構成され、前年の所得に基づいて課税されます。</p>
+                            <button class="card-btn" onclick="openModal('resident-tax-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">🏘️</div>
+                            <h3>固定資産税・都市計画税</h3>
+                            <p>土地や建物などの固定資産を所有している人にかかる税金。毎年1月1日時点の所有者が納税義務者。</p>
+                            <button class="card-btn" onclick="openModal('property-tax-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">🚗</div>
+                            <h3>自動車税・軽自動車税</h3>
+                            <p>自動車を所有している人にかかる税金。排気量や車種によって税額が決まります。</p>
+                            <button class="card-btn" onclick="openModal('vehicle-tax-detail-modal')">詳しく見る</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">📄</div>
+                            <h3>その他の地方税</h3>
+                            <p>事業税、不動産取得税、印紙税など、特定の行為や財産に対してかかる様々な税金があります。</p>
+                            <button class="card-btn" onclick="openModal('other-tax-detail-modal')">詳しく見る</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tax Usage -->
+                <div class="tax-usage">
+                    <h3 class="category-title">💰 税金の使い道</h3>
+                    <div class="usage-grid">
+                        <div class="usage-item">
+                            <div class="usage-icon">🏥</div>
+                            <h4>社会保障</h4>
+                            <p>年金、医療、介護、子育て支援など</p>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-icon">🎓</div>
+                            <h4>教育・科学技術</h4>
+                            <p>学校教育、研究開発、文化振興など</p>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-icon">🛣️</div>
+                            <h4>公共事業</h4>
+                            <p>道路、橋、港湾、河川整備など</p>
+                        </div>
+                        <div class="usage-item">
+                            <div class="usage-icon">🛡️</div>
+                            <h4>防衛・治安</h4>
+                            <p>国防、警察、消防、裁判所など</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section id="calculator" class="section">
+            <div class="container">
+                <h2 class="section-title">便利ツール</h2>
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3>💰 所得税・住民税計算機</h3>
+                        <div class="input-group">
+                            <label for="income">年収（万円）</label>
+                            <input type="number" id="income" placeholder="例: 400">
+                        </div>
+                        <div class="input-group">
+                            <label for="deductions">所得控除額（万円）</label>
+                            <input type="number" id="deductions" placeholder="例: 120" value="120">
+                            <small>基礎控除、社会保険料控除等の合計</small>
+                        </div>
+                        <button class="btn btn-primary" onclick="calculateIncomeTax()">計算する</button>
+                        <div id="income-tax-result" class="result"></div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <h3>🏠 固定資産税計算機</h3>
+                        <div class="input-group">
+                            <label for="property-value">固定資産評価額（万円）</label>
+                            <input type="number" id="property-value" placeholder="例: 2000">
+                        </div>
+                        <div class="input-group">
+                            <label for="property-type">物件種別</label>
+                            <select id="property-type">
+                                <option value="residential">住宅用地</option>
+                                <option value="residential-small">小規模住宅用地（200㎡以下）</option>
+                                <option value="commercial">商業用地</option>
+                                <option value="building">建物</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" onclick="calculatePropertyTax()">計算する</button>
+                        <div id="property-tax-result" class="result"></div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <h3>🚗 自動車税計算機</h3>
+                        <div class="input-group">
+                            <label for="car-type">車種</label>
+                            <select id="car-type">
+                                <option value="kei">軽自動車</option>
+                                <option value="1000">普通車 1000cc以下</option>
+                                <option value="1500">普通車 1001-1500cc</option>
+                                <option value="2000">普通車 1501-2000cc</option>
+                                <option value="2500">普通車 2001-2500cc</option>
+                                <option value="3000">普通車 2501-3000cc</option>
+                                <option value="3500">普通車 3001-3500cc</option>
+                                <option value="4000">普通車 3501-4000cc</option>
+                                <option value="4500">普通車 4001-4500cc</option>
+                                <option value="6000">普通車 4501-6000cc</option>
+                                <option value="6001">普通車 6000cc超</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="car-age">車両年数</label>
+                            <select id="car-age">
+                                <option value="new">13年未満</option>
+                                <option value="old">13年以上</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" onclick="calculateCarTax()">計算する</button>
+                        <div id="car-tax-result" class="result"></div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <h3>💱 為替レート計算機</h3>
+                        <div class="input-group">
+                            <label for="amount">金額</label>
+                            <input type="number" id="amount" placeholder="例: 100">
+                        </div>
+                        <div class="currency-select-wrapper">
+                            <div class="currency-input-group">
+                                <label for="from-currency">換算元</label>
+                                <select id="from-currency">
+                                    <option value="JPY">🇯🇵 日本円</option>
+                                    <option value="USD">🇺🇸 米ドル</option>
+                                    <option value="EUR">🇪🇺 ユーロ</option>
+                                    <option value="GBP">🇬🇧 英ポンド</option>
+                                    <option value="CNY">🇨🇳 中国元</option>
+                                    <option value="KRW">🇰🇷 韓国ウォン</option>
+                                </select>
+                            </div>
+                            <div class="currency-swap">
+                                <button type="button" class="swap-btn" onclick="swapCurrencies()" aria-label="通貨を入れ替え">
+                                    ⇄
+                                </button>
+                            </div>
+                            <div class="currency-input-group">
+                                <label for="to-currency">換算先</label>
+                                <select id="to-currency">
+                                    <option value="USD">🇺🇸 米ドル</option>
+                                    <option value="JPY">🇯🇵 日本円</option>
+                                    <option value="EUR">🇪🇺 ユーロ</option>
+                                    <option value="GBP">🇬🇧 英ポンド</option>
+                                    <option value="CNY">🇨🇳 中国元</option>
+                                    <option value="KRW">🇰🇷 韓国ウォン</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="calculateExchange()">計算する</button>
+                        <div id="exchange-result" class="result"></div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <div class="tool-card-content">
+                            <div class="tool-icon">🔍</div>
+                            <h3>優良企業を見つけるコツ</h3>
+                            <p>投資で成功するための企業分析の秘伝。7つのポイントで優良企業を見抜く方法を学びましょう。</p>
+                            <button class="btn btn-primary" onclick="openModal('company-analysis-modal')">詳しく見る</button>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <div class="tool-card-content">
+                            <div class="tool-icon">📊</div>
+                            <h3>リアルタイム為替レート</h3>
+                            <p>日本円を基準とした主要通貨のリアルタイム為替レートを確認できます。100円、1,000円、10,000円での換算値を一覧表示。</p>
+                            <button class="btn btn-primary" onclick="openModal('exchange-rates-modal')">詳しく見る</button>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <div class="tool-card-content">
+                            <div class="tool-icon">💰</div>
+                            <h3>給与明細モデル</h3>
+                            <p>会社員の給与から引かれる税金と保険料を詳しく解説。各項目の用途をわかりやすく説明します。</p>
+                            <button class="btn btn-primary" onclick="openModal('salary-slip-modal')">詳しく見る</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Glossary Section -->
+        <section id="glossary" class="section glossary-content">
+            <div class="container">
+                <h2 class="section-title">金融用語単語帳</h2>
+                <div class="glossary-controls">
+                    <div class="search-box">
+                        <input type="text" id="glossary-search" placeholder="単語を検索...">
+                        <button class="btn btn-secondary" onclick="searchGlossary()">検索</button>
+                    </div>
+                    <div class="admin-controls">
+                        <button class="btn btn-primary" onclick="showPasswordPrompt()">単語を追加</button>
+                        <div id="password-prompt" class="password-prompt" style="display: none;">
+                            <input type="password" id="admin-password" placeholder="パスワードを入力">
+                            <button class="btn btn-primary" onclick="verifyPassword()">確認</button>
+                            <button class="btn btn-secondary" onclick="hidePasswordPrompt()">キャンセル</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="glossary-grid" id="glossary-grid">
+                    <!-- JavaScriptで動的に生成 -->
+                </div>
+                <div id="add-word-form" class="add-word-form" style="display: none;">
+                    <h3>新しい単語を追加</h3>
+                    <div class="form-group">
+                        <label for="new-word">単語：</label>
+                        <input type="text" id="new-word" placeholder="例：GDP">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-reading">読み方：</label>
+                        <input type="text" id="new-reading" placeholder="例：ジーディーピー">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-meaning">意味・解説：</label>
+                        <textarea id="new-meaning" rows="4" placeholder="単語の詳しい説明を入力してください"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-category">カテゴリ：</label>
+                        <select id="new-category">
+                            <option value="通貨">通貨</option>
+                            <option value="税金">税金</option>
+                            <option value="投資">投資</option>
+                            <option value="経済">経済</option>
+                            <option value="銀行">銀行</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="btn btn-primary" onclick="addNewWord()">追加</button>
+                        <button class="btn btn-secondary" onclick="hideAddWordForm()">キャンセル</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">理解度チェッククイズ</h2>
+                <div class="quiz-container">
+                    <div id="quiz-question" class="quiz-question">
+                        <h3>質問1: 日本の消費税率は何%でしょうか？</h3>
+                        <div class="quiz-options">
+                            <button class="quiz-option" onclick="selectAnswer(0, 8)">8%</button>
+                            <button class="quiz-option" onclick="selectAnswer(0, 10)">10%</button>
+                            <button class="quiz-option" onclick="selectAnswer(0, 12)">12%</button>
+                            <button class="quiz-option" onclick="selectAnswer(0, 15)">15%</button>
+                        </div>
+                    </div>
+                    <div id="quiz-result" class="quiz-result"></div>
+                    <div class="quiz-controls">
+                        <button id="next-question" class="btn btn-primary" onclick="nextQuestion()" style="display: none;">次の問題</button>
+                        <button id="restart-quiz" class="btn btn-secondary" onclick="restartQuiz()" style="display: none;">もう一度</button>
+                    </div>
+                    <div class="quiz-score">
+                        <span>スコア: <span id="score">0</span> / <span id="total-questions">5</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Currency Detail Modal -->
+    <div id="currency-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-currency-name"></h2>
+                <span class="modal-close" id="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-currency-info">
+                    <div class="modal-flag-section">
+                        <div class="modal-flag" id="modal-flag"></div>
+                        <div class="modal-basic-info">
+                            <div class="modal-code" id="modal-code"></div>
+                            <div class="modal-symbol" id="modal-symbol"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="detail-section">
+                        <h3>📍 使用国・地域</h3>
+                        <p id="modal-countries"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h3>📜 歴史</h3>
+                        <p id="modal-history"></p>
+                    </div>
+                    <div class="detail-section">
+                        <h3>💡 特徴</h3>
+                        <ul id="modal-features"></ul>
+                    </div>
+                    <div class="detail-section">
+                        <h3>🌟 興味深い事実</h3>
+                        <p id="modal-facts"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>お金の大学</h3>
+                    <p>通貨と税金の仕組みを楽しく学べる教育サイト</p>
+                </div>
+                <div class="footer-section">
+                    <h4>学習コンテンツ</h4>
+                    <ul>
+                        <li><a href="#currency">通貨の仕組み</a></li>
+                        <li><a href="#tax">税金の仕組み</a></li>
+                        <li><a href="#world-currency">世界の通貨</a></li>
+                        <li><a href="#calculator">便利ツール</a></li>
+                        <li><a href="#quiz">クイズ</a></li>
+                        <li><a href="#glossary">単語帳</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>お役立ち情報</h4>
+                    <ul>
+                        <li><a href="#">ファイナンシャルプランニング</a></li>
+                        <li><a href="#">投資の基本</a></li>
+                        <li><a href="#">節税対策</a></li>
+                        <li><a href="#">資産運用</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 お金の大学 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- フローティング単語帳ボタン -->
+    <div id="floating-glossary-btn" class="floating-glossary-btn" onclick="openGlossarySearch()" title="単語を検索">
+        <span class="floating-btn-icon">📚</span>
+        <span class="floating-btn-text">単語帳</span>
+    </div>
+
+    <!-- スクロールトップボタン -->
+    <div id="scroll-top-btn" class="scroll-top-btn" onclick="scrollToTop()" title="ページの上部へ">
+        <span class="scroll-top-icon">↑</span>
+    </div>
+
+    <!-- 単語検索モーダル -->
+    <div id="glossary-search-modal" class="modal">
+        <div class="modal-content glossary-search-modal-content">
+            <div class="modal-header">
+                <h2>📚 単語を検索</h2>
+                <span class="modal-close" onclick="closeModal('glossary-search-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="search-section">
+                    <div class="search-box">
+                        <input type="text" id="floating-search-input" placeholder="調べたい単語を入力..." onkeyup="searchGlossaryFloat()" />
+                        <button class="btn btn-primary" onclick="searchGlossaryFloat()">検索</button>
+                    </div>
+                </div>
+                <div id="floating-search-results" class="floating-search-results">
+                    <p class="search-prompt">調べたい単語を入力してください</p>
+                </div>
+                <div class="quick-access">
+                    <p class="quick-access-title">よく検索される単語:</p>
+                    <div class="quick-tags">
+                        <span class="quick-tag" onclick="searchQuickTerm('NISA')">NISA</span>
+                        <span class="quick-tag" onclick="searchQuickTerm('iDeCo')">iDeCo</span>
+                        <span class="quick-tag" onclick="searchQuickTerm('複利')">複利</span>
+                        <span class="quick-tag" onclick="searchQuickTerm('分散投資')">分散投資</span>
+                        <span class="quick-tag" onclick="searchQuickTerm('為替')">為替</span>
+                        <span class="quick-tag" onclick="searchQuickTerm('所得税')">所得税</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Currency Detail Modals -->
+    <div id="currency-detail-1-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💴 通貨とは？</h2>
+                <span class="modal-close" onclick="closeModal('currency-detail-1-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>通貨の役割</h4>
+                <ul>
+                    <li>交換手段：商品やサービスと交換できる</li>
+                    <li>価値尺度：物の価値を測る基準になる</li>
+                    <li>価値保存：将来のために価値を保存できる</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="currency-detail-2-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📈 為替レート</h2>
+                <span class="modal-close" onclick="closeModal('currency-detail-2-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>為替レートの決まり方</h4>
+                <ul>
+                    <li>需要と供給：通貨への需要が高いと価値が上がる</li>
+                    <li>経済指標：GDP、インフレ率などが影響</li>
+                    <li>政治的安定性：政治が安定している国の通貨は信頼される</li>
+                </ul>
+                
+                <div class="modal-shortcut-section">
+                    <h4>📊 関連ツール</h4>
+                    <div class="shortcut-button-wrapper">
+                        <button class="shortcut-btn" onclick="closeModal('currency-detail-2-modal'); scrollToCalculatorSection();">
+                            <span class="shortcut-icon">📊</span>
+                            <span class="shortcut-text">リアルタイム為替レート</span>
+                            <span class="shortcut-arrow">→</span>
+                        </button>
+                    </div>
+                    <p class="shortcut-description">無料APIを使用してリアルタイムの為替レートを取得し、通貨換算ができます。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="currency-detail-3-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏦 中央銀行の役割</h2>
+                <span class="modal-close" onclick="closeModal('currency-detail-3-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>主な役割</h4>
+                <ul>
+                    <li>通貨発行：お札や硬貨を発行する</li>
+                    <li>金利政策：政策金利を決定する</li>
+                    <li>物価安定：インフレを適切な水準に保つ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Detail Modals -->
+    <div id="risk-return-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💰 リスクとリターン</h2>
+                <span class="modal-close" onclick="closeModal('risk-return-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>リスクとリターンの関係</h4>
+                <ul>
+                    <li>ローリスク・ローリターン：定期預金、国債など</li>
+                    <li>ミドルリスク・ミドルリターン：投資信託、ETFなど</li>
+                    <li>ハイリスク・ハイリターン：個別株、FXなど</li>
+                    <li>リスク許容度に応じた投資選択が重要</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="diversification-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎯 分散投資</h2>
+                <span class="modal-close" onclick="closeModal('diversification-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>分散投資の方法</h4>
+                <ul>
+                    <li>資産クラス分散：株式、債券、不動産など</li>
+                    <li>地域分散：国内外の様々な地域</li>
+                    <li>時間分散：ドルコスト平均法など</li>
+                    <li>銘柄分散：複数の企業への投資</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="compound-interest-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⏰ 複利の力</h2>
+                <span class="modal-close" onclick="closeModal('compound-interest-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>複利効果の例</h4>
+                <ul>
+                    <li>年利5%で100万円を10年運用：約163万円</li>
+                    <li>年利5%で100万円を20年運用：約265万円</li>
+                    <li>年利5%で100万円を30年運用：約432万円</li>
+                    <li>運用期間が長いほど複利効果は大きくなる</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="long-term-investment-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📊 長期投資</h2>
+                <span class="modal-close" onclick="closeModal('long-term-investment-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>長期投資のメリット</h4>
+                <ul>
+                    <li>複利効果を最大限活用できる</li>
+                    <li>短期的な市場変動の影響を軽減</li>
+                    <li>売買回数減少によるコスト削減</li>
+                    <li>経済成長の恩恵を受けられる</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="stock-investment-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📈 株式投資</h2>
+                <span class="modal-close" onclick="closeModal('stock-investment-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>株式投資の特徴</h4>
+                <ul>
+                    <li>株価の値上がり益（キャピタルゲイン）</li>
+                    <li>配当金による収益（インカムゲイン）</li>
+                    <li>株主優待制度（日本独特の制度）</li>
+                    <li>企業の経営権への参加（株主総会議決権）</li>
+                </ul>
+                
+                <div class="modal-shortcut-section">
+                    <h4>🔍 関連ツール</h4>
+                    <div class="shortcut-button-wrapper">
+                        <button class="shortcut-btn" onclick="closeModal('stock-investment-detail-modal'); openCompanyAnalysisModalToRules();">
+                            <span class="shortcut-icon">🔍</span>
+                            <span class="shortcut-text">優良企業を見つけるコツ</span>
+                            <span class="shortcut-arrow">→</span>
+                        </button>
+                    </div>
+                    <p class="shortcut-description">投資で成功するための企業分析の秘伝。7つのポイントで優良企業を見抜く方法を学びましょう。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bond-investment-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏛️ 債券投資</h2>
+                <span class="modal-close" onclick="closeModal('bond-investment-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>債券の種類</h4>
+                <ul>
+                    <li>国債：国が発行する債券（安全性が高い）</li>
+                    <li>地方債：地方自治体が発行する債券</li>
+                    <li>社債：企業が発行する債券</li>
+                    <li>外国債券：外国政府や企業の債券</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="mutual-fund-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📦 投資信託・ETF</h2>
+                <span class="modal-close" onclick="closeModal('mutual-fund-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>投資信託・ETFの特徴</h4>
+                <ul>
+                    <li>少額から始められる（100円～）</li>
+                    <li>プロによる運用</li>
+                    <li>自動的な分散投資効果</li>
+                    <li>ETFは証券取引所で売買可能</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="real-estate-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏠 不動産投資</h2>
+                <span class="modal-close" onclick="closeModal('real-estate-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>不動産投資の種類</h4>
+                <ul>
+                    <li>実物不動産：マンション、アパートなど</li>
+                    <li>REIT：不動産投資信託</li>
+                    <li>不動産クラウドファンディング</li>
+                    <li>家賃収入とキャピタルゲインの両方を狙える</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="crypto-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>₿ 暗号通貨（仮想通貨）</h2>
+                <span class="modal-close" onclick="closeModal('crypto-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>暗号通貨投資の特徴</h4>
+                <ul>
+                    <li>24時間365日取引可能</li>
+                    <li>非常に高いボラティリティ（価格変動）</li>
+                    <li>分散型システムによる管理</li>
+                    <li>⚠️ 投資は余剰資金の範囲で慎重に</li>
+                </ul>
+                <h4>主要な暗号通貨</h4>
+                <ul>
+                    <li>Bitcoin（BTC）：最初の暗号通貨</li>
+                    <li>Ethereum（ETH）：スマートコントラクト機能</li>
+                    <li>国内取引所での取引が安全</li>
+                    <li>税制上は雑所得として総合課税</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="nisa-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🎯 NISA（ニーサ）</h2>
+                <span class="modal-close" onclick="closeModal('nisa-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>新NISA制度（2024年～）</h4>
+                <ul>
+                    <li>つみたて投資枠：年間120万円まで</li>
+                    <li>成長投資枠：年間240万円まで</li>
+                    <li>生涯投資枠：1,800万円まで</li>
+                    <li>投資期間：恒久化（期限なし）</li>
+                </ul>
+                
+                <div class="nisa-brokers-section">
+                    <h4>🏦 NISA口座におすすめの証券会社</h4>
+                    <div class="broker-comparison">
+                        <div class="broker-item">
+                            <h5>🟢 SBI証券</h5>
+                            <ul>
+                                <li>投資信託の取扱本数：約2,600本</li>
+                                <li>国内株式売買手数料：無料</li>
+                                <li>海外ETF：米国・中国など9か国</li>
+                                <li>クレカ積立：三井住友カードで0.5～5.0%還元</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="broker-item">
+                            <h5>🔴 楽天証券</h5>
+                            <ul>
+                                <li>投資信託の取扱本数：約2,600本</li>
+                                <li>国内株式売買手数料：無料</li>
+                                <li>海外ETF：米国・中国・ASEAN</li>
+                                <li>クレカ積立：楽天カードで0.5～1.0%還元</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="broker-item">
+                            <h5>🟡 マネックス証券</h5>
+                            <ul>
+                                <li>投資信託の取扱本数：約1,200本</li>
+                                <li>国内株式売買手数料：無料</li>
+                                <li>米国株・中国株に強い</li>
+                                <li>クレカ積立：マネックスカードで1.1%還元</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="broker-item">
+                            <h5>🔵 松井証券</h5>
+                            <ul>
+                                <li>投資信託の取扱本数：約1,600本</li>
+                                <li>国内株式売買手数料：無料</li>
+                                <li>サポート体制が充実</li>
+                                <li>投信毎月ポイント・現金還元サービス</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="broker-selection-tips">
+                        <h5>📝 証券会社選びのポイント</h5>
+                        <ul>
+                            <li><strong>手数料の安さ：</strong>売買手数料や信託報酬</li>
+                            <li><strong>商品の豊富さ：</strong>投資信託やETFの取扱本数</li>
+                            <li><strong>使いやすさ：</strong>アプリやWebサイトの操作性</li>
+                            <li><strong>サポート：</strong>コールセンターやチャット対応</li>
+                            <li><strong>付加サービス：</strong>ポイント還元やクレカ積立</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ideco-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>👨‍🦳 iDeCo（イデコ）</h2>
+                <span class="modal-close" onclick="closeModal('ideco-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>iDeCoの税制優遇</h4>
+                <ul>
+                    <li>掛金が所得控除（年間最大81.6万円）</li>
+                    <li>運用益が非課税</li>
+                    <li>受取時は退職所得控除等を適用</li>
+                    <li>60歳まで引き出し不可（老後資金専用）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="dc-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏢 企業型確定拠出年金（企業型DC）</h2>
+                <span class="modal-close" onclick="closeModal('dc-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>企業型DCの特徴</h4>
+                <ul>
+                    <li>企業が掛金を拠出（年間最大66万円）</li>
+                    <li>マッチング拠出で従業員も追加拠出可能</li>
+                    <li>運用益が非課税で複利効果を享受</li>
+                    <li>転職時はポータビリティ制度で移管可能</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tax Detail Modals -->
+    <div id="consumption-tax-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 消費税</h2>
+                <span class="modal-close" onclick="closeModal('consumption-tax-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>消費税の仕組み</h4>
+                <ul>
+                    <li>標準税率：10%（国税7.8% + 地方消費税2.2%）</li>
+                    <li>軽減税率：8%（食料品、新聞など）</li>
+                    <li>課税売上高1000万円超の事業者は納税義務あり</li>
+                    <li>インボイス制度により適格請求書が必要</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="corporate-tax-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏢 法人税</h2>
+                <span class="modal-close" onclick="closeModal('corporate-tax-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>法人税の税率</h4>
+                <ul>
+                    <li>中小法人：年800万円以下15%、超過分23.2%</li>
+                    <li>大法人：23.2%</li>
+                    <li>地方法人税：法人税額の10.3%</li>
+                    <li>欠損金の繰越控除制度あり</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="inheritance-tax-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💎 相続税・贈与税</h2>
+                <span class="modal-close" onclick="closeModal('inheritance-tax-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>相続税・贈与税の概要</h4>
+                <ul>
+                    <li>相続税基礎控除：3000万円 + 600万円 × 法定相続人数</li>
+                    <li>贈与税基礎控除：年間110万円</li>
+                    <li>配偶者控除：相続税1億6000万円または法定相続分</li>
+                    <li>贈与税の税率：10%～55%（累進課税）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="resident-tax-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏠 住民税</h2>
+                <span class="modal-close" onclick="closeModal('resident-tax-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>住民税の仕組み</h4>
+                <ul>
+                    <li>所得割：前年所得の約10%（都道府県民税4% + 市町村民税6%）</li>
+                    <li>均等割：年額約5000円（地域により異なる）</li>
+                    <li>特別徴収：給与から天引き</li>
+                    <li>普通徴収：個人で納付</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="property-tax-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏘️ 固定資産税・都市計画税</h2>
+                <span class="modal-close" onclick="closeModal('property-tax-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>固定資産税等の概要</h4>
+                <ul>
+                    <li>固定資産税：評価額の1.4%（標準税率）</li>
+                    <li>都市計画税：評価額の0.3%以下</li>
+                    <li>住宅用地の特例：課税標準が1/6または1/3に軽減</li>
+                    <li>新築住宅の軽減：3年間または5年間税額が1/2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="vehicle-tax-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🚗 自動車税・軽自動車税</h2>
+                <span class="modal-close" onclick="closeModal('vehicle-tax-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>自動車関連税の概要</h4>
+                <ul>
+                    <li>自動車税：排気量別（25,000円～111,000円）</li>
+                    <li>軽自動車税：一律10,800円</li>
+                    <li>エコカー減税：環境性能に応じて軽減</li>
+                    <li>13年超の車両は重課税（約15%増）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="other-tax-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📄 その他の地方税</h2>
+                <span class="modal-close" onclick="closeModal('other-tax-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h4>その他の主要な税金</h4>
+                <ul>
+                    <li>個人事業税：事業所得290万円超の場合3%～5%</li>
+                    <li>不動産取得税：取得価格の3%～4%</li>
+                    <li>印紙税：契約書等に貼付する収入印紙</li>
+                    <li>たばこ税・酒税：特定商品への課税</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 所得税詳細モーダル -->
+    <div id="income-tax-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💰 所得税の詳しい解説</h2>
+                <span class="modal-close" onclick="closeIncomeTaxModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="income-tax-modal-grid">
+                    <div class="income-section">
+                        <h4>💼 主な所得区分</h4>
+                        <div class="income-types-modal">
+                            <div class="income-type-modal">
+                                <div class="income-header">
+                                    <strong>給与所得</strong>
+                                    <span class="income-badge">💼</span>
+                                </div>
+                                <p>会社員等の給料・賞与から給与所得控除を差し引いた金額</p>
+                            </div>
+                            <div class="income-type-modal">
+                                <div class="income-header">
+                                    <strong>事業所得</strong>
+                                    <span class="income-badge">🏢</span>
+                                </div>
+                                <p>個人事業主の事業収入から必要経費を差し引いた金額</p>
+                            </div>
+                            <div class="income-type-modal">
+                                <div class="income-header">
+                                    <strong>不動産所得</strong>
+                                    <span class="income-badge">🏠</span>
+                                </div>
+                                <p>賃貸収入など不動産から生じる所得</p>
+                            </div>
+                            <div class="income-type-modal">
+                                <div class="income-header">
+                                    <strong>配当所得</strong>
+                                    <span class="income-badge">📈</span>
+                                </div>
+                                <p>株式の配当金など法人からの利益配当</p>
+                            </div>
+                            <div class="income-type-modal">
+                                <div class="income-header">
+                                    <strong>雑所得</strong>
+                                    <span class="income-badge">💡</span>
+                                </div>
+                                <p>年金、副業、仮想通貨売買など他に分類されない所得</p>
+                            </div>
+                            <div class="income-type-modal">
+                                <div class="income-header">
+                                    <strong>一時所得</strong>
+                                    <span class="income-badge">🎯</span>
+                                </div>
+                                <p>保険満期金、競馬の払戻金など一時的な所得</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tax-rates-section">
+                        <h4>📊 所得税率（令和5年度）</h4>
+                        <div class="tax-table-modal">
+                            <div class="tax-row-modal">
+                                <span class="amount">195万円以下</span>
+                                <span class="rate">5%</span>
+                            </div>
+                            <div class="tax-row-modal">
+                                <span class="amount">195万円超～330万円</span>
+                                <span class="rate">10%</span>
+                            </div>
+                            <div class="tax-row-modal">
+                                <span class="amount">330万円超～695万円</span>
+                                <span class="rate">20%</span>
+                            </div>
+                            <div class="tax-row-modal">
+                                <span class="amount">695万円超～900万円</span>
+                                <span class="rate">23%</span>
+                            </div>
+                            <div class="tax-row-modal">
+                                <span class="amount">900万円超～1800万円</span>
+                                <span class="rate">33%</span>
+                            </div>
+                            <div class="tax-row-modal">
+                                <span class="amount">1800万円超～4000万円</span>
+                                <span class="rate">40%</span>
+                            </div>
+                            <div class="tax-row-modal">
+                                <span class="amount">4000万円超</span>
+                                <span class="rate">45%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="special-taxation-modal">
+                    <h4>⚖️ 特殊な課税方式</h4>
+                    <div class="special-tax-grid-modal">
+                        <div class="special-item-modal">
+                            <div class="special-header">
+                                <strong>雑所得</strong>
+                                <span class="special-badge">🔄</span>
+                            </div>
+                            <p>総合課税（他の所得と合算して税率を適用）</p>
+                        </div>
+                        <div class="special-item-modal">
+                            <div class="special-header">
+                                <strong>一時所得</strong>
+                                <span class="special-badge">➗</span>
+                            </div>
+                            <p>（収入-50万円）×1/2が課税対象となる特殊計算</p>
+                        </div>
+                        <div class="special-item-modal">
+                            <div class="special-header">
+                                <strong>譲渡所得（株式）</strong>
+                                <span class="special-badge">📊</span>
+                            </div>
+                            <p>申告分離課税 20.315%（所得税15% + 住民税5% + 復興特別所得税0.315%）</p>
+                        </div>
+                        <div class="special-item-modal">
+                            <div class="special-header">
+                                <strong>譲渡所得（不動産）</strong>
+                                <span class="special-badge">🏘️</span>
+                            </div>
+                            <p>短期（5年以下）39.63% / 長期（5年超）20.315%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Analysis Modal -->
+    <div id="company-analysis-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🔍 優良企業を見抜く秘伝の7箇条</h2>
+                <span class="modal-close" onclick="closeModal('company-analysis-modal')">&times;</span>
+            </div>
+            <div class="modal-body company-analysis-content">
+                <div class="analysis-intro">
+                    <div class="analysis-concept">
+                        <h3>💡 企業分析の基本概念</h3>
+                        <p>優良企業を見抜くことは、いわば<strong>「企業の健康診断」</strong>を行うことです。</p>
+                        <div class="concept-points">
+                            <div class="concept-item">
+                                <span class="concept-icon">📈</span>
+                                <span>企業が今後も配当金を出し続けられるか</span>
+                            </div>
+                            <div class="concept-item">
+                                <span class="concept-icon">🚀</span>
+                                <span>企業自体も大きく成長し、配当金を今後も増やしていけるか</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-tools">
+                        <h3>🛠️ 分析に使用するツール</h3>
+                        <div class="tool-recommendation">
+                            <div class="tool-main">
+                                <h4>IR BANK（アイアールバンク）</h4>
+                                <p>無料で誰でも簡単に分析ができる優秀なツールです。これ1つで基本的な分析は完結します！</p>
+                            </div>
+                            <div class="additional-tools">
+                                <p><strong>その他のおすすめツール：</strong></p>
+                                <ul>
+                                    <li>バフェットコード（視認性が高く、利回り推移グラフが便利）</li>
+                                    <li>銘柄スカウター（マネックス証券・情報量と視認性がピカイチ）</li>
+                                    <li>配当ナビ（高配当株に特化した新サービス）</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seven-rules">
+                    <h3>🎯 秘伝の7箇条</h3>
+                    
+                    <div class="rule-item">
+                        <div class="rule-header">
+                            <span class="rule-number">01</span>
+                            <h4>売上が安定して伸びているか</h4>
+                        </div>
+                        <div class="rule-content">
+                            <p><strong>「営業収益」もしくは「売上」が右肩上がりか</strong>（企業によって表記が異なるが同じ意味）</p>
+                            <div class="rule-details">
+                                <div class="check-point">
+                                    <span class="point-icon">⚠️</span>
+                                    <span>コロナやリーマンショック時は特に注目</span>
+                                </div>
+                                <p>安定した売上成長は企業の基盤となる収益力を示します。経済危機時でも売上を維持できる企業は強靭なビジネスモデルを持っています。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <div class="rule-header">
+                            <span class="rule-number">02</span>
+                            <h4>利益（EPS）は伸びているか</h4>
+                        </div>
+                        <div class="rule-content">
+                            <p><strong>「EPS」が右肩上がりか</strong></p>
+                            <div class="rule-details">
+                                <div class="definition">
+                                    <strong>EPSとは：</strong>1株あたり純利益のこと
+                                </div>
+                                <p>1株に対してどれだけ利益を出せているかの指標です。売上が伸びても利益が伸びなければ意味がありません。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <div class="rule-header">
+                            <span class="rule-number">03</span>
+                            <h4>営業利益率が合格水準か</h4>
+                        </div>
+                        <div class="rule-content">
+                            <p><strong>「営業利益率」が10％を超えてるといい感じ</strong></p>
+                            <div class="rule-details">
+                                <div class="definition">
+                                    <strong>営業利益率とは：</strong>売上から経費を引いた利益の割合
+                                </div>
+                                <div class="warning">
+                                    <span class="warning-icon">📝</span>
+                                    <span>業種によって利益率は異なるので注意！</span>
+                                </div>
+                                <p>効率的な経営ができているかを測る重要な指標です。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-item highlight-rule">
+                        <div class="rule-header">
+                            <span class="rule-number">04</span>
+                            <h4>配当金は増えているか</h4>
+                        </div>
+                        <div class="rule-content">
+                            <p><strong>超重要！「配当金」が右肩上がりに増えているか</strong></p>
+                            <div class="rule-details">
+                                <div class="critical-warning">
+                                    <span class="warning-icon">🚨</span>
+                                    <span>どんなに成長していてもここがダメなら罠銘柄</span>
+                                </div>
+                                <div class="check-point">
+                                    <span class="point-icon">⚠️</span>
+                                    <span>コロナやリーマンショック時は特に注目</span>
+                                </div>
+                                <p>高配当株投資で最も重要なポイント。企業の成長が株主還元に反映されているかを確認します。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <div class="rule-header">
+                            <span class="rule-number">05</span>
+                            <h4>配当性向は無理していないか</h4>
+                        </div>
+                        <div class="rule-content">
+                            <p><strong>「配当性向」は無理ない水準か（40％前後が理想）</strong></p>
+                            <div class="rule-details">
+                                <div class="definition">
+                                    <strong>配当性向とは：</strong>利益の何％を配当として還元するか
+                                </div>
+                                <div class="balance-warning">
+                                    <span class="warning-icon">⚖️</span>
+                                    <span>高くても低くてもダメ！</span>
+                                </div>
+                                <p>持続可能な配当を出せているかを判断する重要な指標です。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-item">
+                        <div class="rule-header">
+                            <span class="rule-number">06</span>
+                            <h4>自己資本比率は問題ないか</h4>
+                        </div>
+                        <div class="rule-content">
+                            <p><strong>「自己資本比率」が低すぎないか（最低40％以上）</strong></p>
+                            <div class="rule-details">
+                                <div class="definition">
+                                    <strong>自己資本比率とは：</strong>会社のお金の借金以外の割合
+                                </div>
+                                <div class="warning">
+                                    <span class="warning-icon">📝</span>
+                                    <span>業種によっては異なるので注意！</span>
+                                </div>
+                                <p>財務の健全性を示す指標。借金が多すぎる企業は危険です。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rule-item final-rule">
+                        <div class="rule-header">
+                            <span class="rule-number">07</span>
+                            <h4>一生持ち続けられるか</h4>
+                        </div>
+                        <div class="rule-content">
+                            <div class="most-important">
+                                <h5>🎯 最も重要なこと</h5>
+                                <p><strong>将来性を感じ、一生持ち続けることができるか</strong></p>
+                            </div>
+                            <div class="rule-details">
+                                <p>数値だけでは測れない企業の将来性、ビジネスモデルの持続可能性、競争優位性などを総合的に判断します。</p>
+                                <div class="consideration-points">
+                                    <h6>考慮すべきポイント：</h6>
+                                    <ul>
+                                        <li>業界の将来性</li>
+                                        <li>競合他社との差別化</li>
+                                        <li>技術革新への対応力</li>
+                                        <li>経営陣の方針と実績</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-example">
+                    <h3>📊 実践例：KDDI（9433）での分析</h3>
+                    <p>PDFで紹介されている具体例では、KDDIを対象に7箇条すべてをIR BANKで確認する方法が解説されています。</p>
+                    <div class="example-steps">
+                        <ol>
+                            <li>IR BANKで「KDDI」または「9433」で検索</li>
+                            <li>「決算」タブをクリック</li>
+                            <li>各指標を7箇条に沿ってチェック</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="analysis-summary">
+                    <h3>📝 まとめ</h3>
+                    <p>これら7箇条すべてをクリアした企業こそが真の優良企業です。一つでも欠けていれば投資を見送るか、より詳細な分析が必要です。</p>
+                    <div class="success-criteria">
+                        <h6>✅ 理想的な企業の特徴：</h6>
+                        <ul>
+                            <li>安定した売上成長</li>
+                            <li>継続的なEPS向上</li>
+                            <li>適切な営業利益率</li>
+                            <li>連続増配の実績</li>
+                            <li>健全な配当性向</li>
+                            <li>強固な財務基盤</li>
+                            <li>長期的な競争優位性</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Salary Slip Modal -->
+    <div id="salary-slip-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💰 給与明細モデル</h2>
+                <span class="modal-close" onclick="closeModal('salary-slip-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="salary-slip-container">
+                    <div class="slip-header">
+                        <h3>給与明細書</h3>
+                        <div class="slip-date">2024年1月分</div>
+                        <div class="employee-info">
+                            <div>氏名: 田中 太郎</div>
+                            <div>従業員番号: 001234</div>
+                        </div>
+                    </div>
+                    
+                    <div class="salary-breakdown">
+                        <div class="earnings-section">
+                            <h4>支給項目</h4>
+                            <div class="salary-line">
+                                <span class="item-name">基本給</span>
+                                <span class="amount">¥300,000</span>
+                            </div>
+                            <div class="salary-line">
+                                <span class="item-name">住宅手当</span>
+                                <span class="amount">¥25,000</span>
+                            </div>
+                            <div class="salary-line">
+                                <span class="item-name">交通費</span>
+                                <span class="amount">¥15,000</span>
+                            </div>
+                            <div class="salary-line total-line">
+                                <span class="item-name">支給合計</span>
+                                <span class="amount">¥340,000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="deductions-section">
+                            <h4>控除項目</h4>
+                            
+                            <div class="salary-line tooltip-container">
+                                <span class="item-name">所得税 <span class="info-icon">ℹ️</span></span>
+                                <span class="amount">¥8,500</span>
+                                <div class="tooltip">
+                                    <h5>所得税の使途</h5>
+                                    <ul>
+                                        <li>国の基本的な行政サービス（防衛、外交、司法など）</li>
+                                        <li>社会保障制度の運営費</li>
+                                        <li>教育・文化・科学技術振興</li>
+                                        <li>公共事業（道路、港湾、空港の整備など）</li>
+                                        <li>地方交付税として地方自治体へ配分</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="salary-line tooltip-container">
+                                <span class="item-name">住民税 <span class="info-icon">ℹ️</span></span>
+                                <span class="amount">¥17,000</span>
+                                <div class="tooltip">
+                                    <h5>住民税の使途</h5>
+                                    <ul>
+                                        <li>地域の道路や公園の整備・維持</li>
+                                        <li>小中学校の運営・教育サービス</li>
+                                        <li>ごみ収集・処理サービス</li>
+                                        <li>図書館・文化施設の運営</li>
+                                        <li>地域の福祉・介護サービス</li>
+                                        <li>消防・救急サービス</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="salary-line tooltip-container">
+                                <span class="item-name">健康保険料 <span class="info-icon">ℹ️</span></span>
+                                <span class="amount">¥16,830</span>
+                                <div class="tooltip">
+                                    <h5>健康保険料の使途</h5>
+                                    <ul>
+                                        <li>医療費の自己負担軽減（通常3割負担）</li>
+                                        <li>出産・育児に関する給付金</li>
+                                        <li>傷病手当金（病気で働けない時の所得保障）</li>
+                                        <li>高額療養費制度による医療費負担軽減</li>
+                                        <li>予防接種や健康診断の補助</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="salary-line tooltip-container">
+                                <span class="item-name">厚生年金保険料 <span class="info-icon">ℹ️</span></span>
+                                <span class="amount">¥31,110</span>
+                                <div class="tooltip">
+                                    <h5>厚生年金保険料の使途</h5>
+                                    <ul>
+                                        <li>将来の老齢年金給付（65歳から）</li>
+                                        <li>障害年金（働けなくなった時の所得保障）</li>
+                                        <li>遺族年金（家族を残して亡くなった時の保障）</li>
+                                        <li>現在の年金受給者への給付</li>
+                                        <li>年金制度の運営費</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="salary-line tooltip-container">
+                                <span class="item-name">雇用保険料 <span class="info-icon">ℹ️</span></span>
+                                <span class="amount">¥1,020</span>
+                                <div class="tooltip">
+                                    <h5>雇用保険料の使途</h5>
+                                    <ul>
+                                        <li>失業給付（失業時の所得保障）</li>
+                                        <li>育児休業給付金</li>
+                                        <li>介護休業給付金</li>
+                                        <li>職業訓練・再就職支援</li>
+                                        <li>雇用安定事業（企業の雇用維持支援）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="salary-line tooltip-container">
+                                <span class="item-name">介護保険料 <span class="info-icon">ℹ️</span></span>
+                                <span class="amount">¥2,890</span>
+                                <div class="tooltip">
+                                    <h5>介護保険料の使途</h5>
+                                    <ul>
+                                        <li>要介護認定された方への介護サービス</li>
+                                        <li>デイサービス・ホームヘルパー派遣</li>
+                                        <li>介護施設の運営支援</li>
+                                        <li>介護予防サービス</li>
+                                        <li>地域包括支援センターの運営</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="salary-line total-line">
+                                <span class="item-name">控除合計</span>
+                                <span class="amount">¥77,350</span>
+                            </div>
+                        </div>
+                        
+                        <div class="net-salary-section">
+                            <div class="salary-line final-total">
+                                <span class="item-name">差引支給額</span>
+                                <span class="amount">¥262,650</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="salary-summary">
+                        <div class="summary-stats">
+                            <div class="stat-item">
+                                <div class="stat-label">控除率</div>
+                                <div class="stat-value">22.7%</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-label">手取り率</div>
+                                <div class="stat-value">77.3%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="educational-note">
+                            <h4>💡 ワンポイント解説</h4>
+                            <p>給与から引かれる税金や保険料は、将来のあなた自身や社会全体を支える重要な制度です。「引かれるお金」ではなく「将来への投資」として理解することが大切です。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exchange Rates Modal -->
+    <div id="exchange-rates-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📊 リアルタイム為替レート一覧</h2>
+                <span class="modal-close" onclick="closeModal('exchange-rates-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="realtime-exchange-dashboard">
+                    <div class="dashboard-header">
+                        <div class="base-currency">
+                            <span class="base-flag">🇯🇵</span>
+                            <span class="base-text">日本円 (JPY) 基準</span>
+                        </div>
+                        <button class="btn btn-primary refresh-btn" onclick="loadExchangeRatesDashboard()">
+                            <span class="refresh-icon">🔄</span>
+                            更新
+                        </button>
+                    </div>
+                    
+                    <div id="exchange-rates-table" class="exchange-rates-table">
+                        <!-- Exchange rates will be loaded here -->
+                    </div>
+                    
+                    <div class="dashboard-footer">
+                        <div class="data-source">
+                            <small>※ データは <a href="https://api.exchangerate-api.com" target="_blank" rel="noopener">Exchange Rate API</a> から取得</small>
+                        </div>
+                        <div class="last-updated-dashboard" id="last-updated-dashboard"></div>
+                    </div>
+                </div>
+
+                <div class="exchange-usage-tips">
+                    <h4>💡 活用のコツ</h4>
+                    <ul>
+                        <li><strong>海外旅行の準備に：</strong>現地通貨での予算計画に活用</li>
+                        <li><strong>オンライン購入時：</strong>外貨での商品価格を日本円で把握</li>
+                        <li><strong>投資判断に：</strong>外貨建て資産の評価額確認</li>
+                        <li><strong>送金・両替時：</strong>レート比較でお得なタイミングを判断</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crypto Investment Modal -->
+    <div id="crypto-detail-modal" class="modal">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h2>💎 仮想通貨投資入門</h2>
+                <span class="modal-close" onclick="closeModal('crypto-detail-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="crypto-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="overview">概要</button>
+                        <button class="tab-btn" data-tab="market">市場データ</button>
+                        <button class="tab-btn" data-tab="glossary">用語集</button>
+                        <button class="tab-btn" data-tab="quiz">クイズ</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <!-- 概要タブ -->
+                        <div id="overview-tab" class="tab-pane active">
+                            <div class="crypto-overview">
+                                <h3>🌟 仮想通貨とは</h3>
+                                <p>仮想通貨（暗号通貨）は、ブロックチェーン技術を基盤としたデジタル通貨です。従来の通貨とは異なり、中央銀行や政府に管理されない分散型の通貨システムです。</p>
+                                
+                                <div class="crypto-features">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🔒</div>
+                                        <h4>セキュリティ</h4>
+                                        <p>暗号化技術により高いセキュリティを実現</p>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">🌐</div>
+                                        <h4>グローバル</h4>
+                                        <p>国境を越えて24時間取引可能</p>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">📈</div>
+                                        <h4>高ボラティリティ</h4>
+                                        <p>価格変動が大きくハイリスク・ハイリターン</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="crypto-risks">
+                                    <h3>⚠️ 投資リスクについて</h3>
+                                    <ul>
+                                        <li><strong>価格変動リスク：</strong>株式以上に価格変動が激しい</li>
+                                        <li><strong>規制リスク：</strong>各国の規制動向により影響を受ける</li>
+                                        <li><strong>技術リスク：</strong>ハッキングやシステム障害のリスク</li>
+                                        <li><strong>流動性リスク：</strong>売りたい時に売れない可能性</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 市場データタブ -->
+                        <div id="market-tab" class="tab-pane">
+                            <div class="crypto-market">
+                                <div class="market-controls">
+                                    <h3>主要仮想通貨 価格表</h3>
+                                    <div class="period-select">
+                                        <button class="period-btn" data-period="1">1時間</button>
+                                        <button class="period-btn" data-period="4">4時間</button>
+                                        <button class="period-btn active" data-period="24">24時間</button>
+                                    </div>
+                                    <button id="refresh-crypto" class="btn btn-secondary">🔄 更新</button>
+                                </div>
+                                
+                                <div class="crypto-table-wrapper">
+                                    <table class="crypto-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ランク</th>
+                                                <th>銘柄</th>
+                                                <th>ティッカー</th>
+                                                <th>時価総額</th>
+                                                <th>価格</th>
+                                                <th id="period-header">24時間変動</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="crypto-table-body">
+                                            <tr><td colspan="6">データ読み込み中...</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="market-info">
+                                    <p id="crypto-last-updated" class="last-updated">データ取得中...</p>
+                                    <p class="data-source">※ データは <a href="https://www.coingecko.com/ja/api" target="_blank">CoinGecko API</a> から取得</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 用語集タブ -->
+                        <div id="glossary-tab" class="tab-pane">
+                            <div class="crypto-glossary">
+                                <h3>📚 仮想通貨用語集</h3>
+                                <div id="crypto-glossary-grid" class="glossary-grid">
+                                    <!-- JavaScript で動的に生成 -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- クイズタブ -->
+                        <div id="quiz-tab" class="tab-pane">
+                            <div class="crypto-quiz">
+                                <h3>🧠 仮想通貨クイズ</h3>
+                                <div id="quiz-container">
+                                    <p>仮想通貨に関する基礎知識をクイズで確認しましょう！</p>
+                                    <button id="start-crypto-quiz" class="btn btn-primary">クイズを開始</button>
+                                </div>
+                                <div id="quiz-question-container" style="display: none;">
+                                    <p id="crypto-quiz-question"></p>
+                                    <div id="crypto-quiz-options"></div>
+                                    <p id="crypto-quiz-score" class="quiz-score"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

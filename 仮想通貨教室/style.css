@@ -1,0 +1,147 @@
+/* ベース ---------------------------------- */
+:root{
+  --bg-main:#f5f7fa;
+  --bg-card:#ffffff;
+  --text-main:#1e212d;
+  --accent:#4f46e5;
+}
+:root.dark{
+  --bg-main:#1f2937;
+  --bg-card:#111827;
+  --text-main:#f3f4f6;
+  --accent:#818cf8;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--bg-main);
+  color:var(--text-main);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans JP",sans-serif;
+  background:var(--bg-main);
+  color:var(--text-main);
+  line-height:1.7;
+  font-size:17px;
+  
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+.table-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;flex-wrap:wrap;}
+.table-controls .period-select{display:flex;gap:.3rem;}
+.table-controls .utilities{display:flex;gap:.4rem;flex-wrap:wrap;margin-left:auto;}
+.period-select{display:flex;gap:.5rem;margin-bottom:.5rem;}
+.period-btn{padding:.3rem .7rem;border:1px solid var(--accent);background:#fff;color:var(--accent);border-radius:.25rem;font-size:.8rem;cursor:pointer;}
+.period-btn.active,.period-btn:hover{background:var(--accent);color:#fff;}
+/* utilities buttons same size */
+.table-controls .utilities .glossary-btn{padding:.3rem .7rem;font-size:.8rem;background:var(--accent);color:#fff;border:none;border-radius:.25rem;cursor:pointer;}
+.table-controls .utilities .glossary-btn:hover{background:#4338ca;}
+header,footer{padding:1.5rem 1rem;text-align:center;}
+header{position:relative;}
+.header-inner{width:min(1200px,95%);margin:0 auto;display:flex;align-items:center;justify-content:flex-end;position:relative;}
+
+.fancy-title{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:clamp(1.6rem,4vw,2.2rem);
+  font-weight:800;
+  color:var(--text-main);
+  white-space:nowrap;
+}
+@keyframes hue{0%{filter:hue-rotate(0deg);}100%{filter:hue-rotate(30deg);}}
+.header-inner h1{position:absolute;left:50%;transform:translateX(-50%);} /* color handled per class */
+.header-inner h1:not(.fancy-title){color:var(--text-main);}
+header h1{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;display:inline-block;margin:0 auto;}
+.glossary-btn{padding:.4rem .9rem;font-size:.8rem;border:none;border-radius:.375rem;background:var(--accent);color:#fff;cursor:pointer;margin-left:.75rem;}
+.glossary-btn:hover{background:#4338ca;}
+
+#quiz-options .glossary-btn{margin:.35rem .6rem;font-size:1rem;padding:.5rem 1rem;}
+
+footer p{font-size:.9rem;opacity:.8;}
+.updated{margin-bottom:.25rem;}
+a{color:var(--accent);text-decoration:none;}
+
+/* テーブル ---------------------------------- */
+.table-wrapper{width:min(1200px,95%);margin:0 auto 3rem;overflow-x:auto;}
+@media(min-width:1400px){
+  .table-wrapper{width:min(1400px,90%);} /* ワイドモニターで余白縮小 */
+}
+table{width:100%;border-collapse:collapse;background:var(--bg-card);color:var(--text-main);box-shadow:0 4px 8px rgb(0 0 0 / .05);border-radius:.5rem;overflow:hidden;}
+thead{background:var(--accent);color:#fff;}
+:root.dark th,/* add explicit rule */
+:root.dark table td,
+:root.dark table th{
+  color:#f9fafb !important;
+  font-weight:500;
+}
+:root.dark table{border-color:rgba(255,255,255,.15);} 
+:root.dark .modal-content table,
+:root.dark .modal-content th,
+:root.dark .modal-content td{
+  background:#1e293b !important;
+  color:#f9fafb !important;
+}
+:root.dark .modal-content thead{
+  background:#374151 !important;
+}
+th,td{padding:.8rem 1rem;text-align:left;white-space:nowrap;}
+tbody tr:nth-child(even){background:rgba(79,70,229,.06);}/* zebra */
+:root.dark tbody tr:nth-child(even){background:rgba(255,255,255,.07);}/* zebra dark*/
+
+tbody tr:hover{background:rgba(79,70,229,.12);}/* hover */
+:root.dark tbody tr:hover{background:rgba(255,255,255,.1);}
+.icon{width:20px;height:20px;vertical-align:middle;margin-right:.4rem;}
+.explain-btn{padding:.35rem .8rem;font-size:.8rem;border:none;border-radius:.375rem;background:var(--accent);color:#fff;cursor:pointer;transition:background .15s;display:inline-block;margin-left:0;}
+.explain-btn:hover{background:#4338ca;}
+
+/* Explanation column align left */
+th:last-child, td:last-child{text-align:left;}
+.rank-up{color:#16a34a;font-size:.75rem;margin-left:.25rem;}
+.rank-down{color:#e74c3c;font-size:.8rem;}
+.change-badge{display:inline-block;padding:0 .4rem;border-radius:.25rem;font-size:.8rem;color:#fff;}
+.change-badge.up{background:#26a65b;}
+.change-badge.down{background:#e74c3c;}
+.change-badge{margin-left:.25rem;}
+.gas{display:inline-block;padding:.2rem .6rem;border-radius:.25rem;font-weight:700;color:#fff;margin-right:.4rem;font-size:.9rem;}
+.gas.fast{background:#e74c3c;}
+.gas.normal{background:#f1c40f;color:#333;}
+.gas.safe{background:#26a65b;}
+.fees{font-size:1rem;margin-top:.7rem;text-align:center;}
+
+/* レスポンシブ ------------------------------ */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;justify-content:center;align-items:center;}
+.modal.hidden{display:none;}
+.modal-content{background:var(--bg-card);color:var(--text-main);padding:2rem;max-width:900px;width:95%;border-radius:.5rem;position:relative;max-height:80vh;overflow-y:auto;scrollbar-width:thin;}
+/* Glossary modal wider with no vertical scroll */
+#glossary-modal .modal-content{max-width:1200px;width:98%;max-height:80vh;overflow-y:auto;}
+
+/* Dark mode scrollbar for glossary */
+:root.dark #glossary-modal .modal-content{
+  scrollbar-width:thin; /* Firefox */
+  scrollbar-color: rgba(255,255,255,.35) rgba(255,255,255,.07);
+}
+:root.dark #glossary-modal .modal-content::-webkit-scrollbar{width:8px;}
+:root.dark #glossary-modal .modal-content::-webkit-scrollbar-track{background:rgba(255,255,255,.07);}
+:root.dark #glossary-modal .modal-content::-webkit-scrollbar-thumb{background:rgba(255,255,255,.35);border-radius:4px;}
+.modal-close{position:fixed;top:1.5rem;right:1.5rem;width:2.25rem;height:2.25rem;border:none;border-radius:50%;background:#ffffff;color:var(--accent);font-size:1.25rem;line-height:1;display:flex;justify-content:center;align-items:center;box-shadow:0 2px 6px rgba(0,0,0,.15);cursor:pointer;z-index:1001;}
+/* 用語ハイライト */
+.glossary-term{border-bottom:1.5px dotted #4338ca;cursor:help;}
+:root.dark .glossary-term{border-bottom:1px dotted #93c5fd;}
+.glossary-term:hover{background:rgba(0,0,0,0.05);}
+/* ---- Modal inner typography ---- */
+.modal-content h3{margin-top:1.2rem;font-size:1rem;color:var(--accent);} 
+.modal-content ul,.modal-content ol{margin-left:1.25rem;margin-top:.5rem;}
+.modal-content table{width:100%;border-collapse:collapse;margin-top:.75rem;font-size:.875rem;line-height:1.4;}
+.modal-content th{background:#f3f4f6;text-align:left;font-weight:600;color:#1e212d;}
+.modal-content td{background:#fff;}
+.modal-content th,.modal-content td{padding:.5rem .75rem;border:1px solid #e5e7eb;}
+/* Tooltip */
+[data-tip]{position:relative;cursor:help;}
+[data-tip]:hover::after{content:attr(data-tip);position:fixed;left:50%;top:1.2rem;transform:translateX(-50%);white-space:pre-wrap;word-break:break-word;background:#1e293b;color:#f8fafc;padding:.75rem 1rem;font-size:.95rem;line-height:1.5;text-align:left;border-radius:.375rem;z-index:2000;max-width:92%;box-shadow:0 4px 10px rgba(0,0,0,.4);}
+[data-tip]:hover::before{display:none;}
+
+
+
+@media(max-width:600px){
+  th:nth-child(3),td:nth-child(3){display:none;} /* small ではティッカー非表示 */
+}

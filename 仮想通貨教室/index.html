@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>初心者にやさしい仮想通貨案内所</title>
+
+  <!-- OGP -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="初心者にやさしい仮想通貨案内所">
+  <meta property="og:description" content="主要 10 銘柄の最新時価総額を CoinGecko API から自動取得して表示します。">
+  <meta property="og:image"       content="https://dummyimage.com/1200x630/1e212d/f5f7fa.png&text=Crypto+Dashboard">
+  <meta property="og:url"         content="https://example.com">
+  <meta name="twitter:card"       content="summary_large_image">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+     <h1 class="fancy-title">初心者にやさしい仮想通貨案内所</h1>
+   </div><!--/.header-inner-->
+  </header>
+
+  <main>
+    <section class="table-wrapper">
+       <div class="table-controls">
+         <div id="period-select" class="period-select">
+        <button class="period-btn" data-period="1">1h</button>
+        <button class="period-btn" data-period="4">4h</button>
+        <button class="period-btn active" data-period="24">24h</button>
+      </div>
+         <div class="utilities">
+           <button id="glossary-btn" class="glossary-btn">用語集</button>
+           <button id="calc-btn" class="glossary-btn">損益計算</button>
+           <button id="quiz-btn" class="glossary-btn">クイズ</button>
+           <button id="tour-btn" class="glossary-btn">使い方</button>
+           <button id="theme-toggle" class="glossary-btn" aria-label="テーマ切替">🌙</button>
+         </div>
+       </div><!--/.table-controls-->
+       <table>
+        <thead>
+          <tr>
+            <th>ランク</th>
+            <th>銘柄</th>
+            <th>ティッカー</th>
+            <th>時価総額&nbsp;($)</th>
+            <th>価格&nbsp;($)</th>
+            <th id="period-header">24h%</th>
+            <th>解説</th>
+          </tr>
+        </thead>
+        <tbody id="crypto-table-body">
+          <!-- ↓ JS で動的に挿入 -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p id="last-updated" class="updated"></p>
+    <p id="fees" class="fees"></p>
+    <p>Powered&nbsp;by&nbsp;<a href="https://www.coingecko.com/ja/api" target="_blank" rel="noopener">CoinGecko&nbsp;API</a></p>
+    <div id="glossary-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="glossary-close" class="modal-close">×</button>
+      <h2>用語集</h2>
+      <div id="glossary-body"></div>
+    </div>
+  </div>
+
+  <!-- 使い方モーダル -->
+  <div id="tour-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="tour-close" class="modal-close">×</button>
+      <h2>サイトの歩き方</h2>
+      <ol style="margin-left:1rem;font-size:.9rem;line-height:1.6;">
+        <li>上部の <strong>1h / 4h / 24h</strong> ボタンで期間別の価格変動率を切替。</li>
+        <li>各銘柄の<strong>「解説」</strong>ボタンで初心者向けのポイントを確認。</li>
+        <li>説明文中の青い点線語にマウスを重ねるとツールチップで用語解説。</li>
+        <li>ヘッダー<strong>「用語集」</strong>で全用語を一覧表示。</li>
+        <li><strong>「損益計算」</strong>で売買履歴から簡易損益を計算。</li>
+        <li><strong>「クイズ」</strong>で学習内容を楽しくチェック。</li>
+        <li>フッターで最新の <strong>Ethereum Gas</strong> 料金を確認。</li>
+        <li>右上の 🌙 ボタンでライト／ダークモード切替。</li>
+      </ol>
+      <p style="text-align:center;margin-top:1rem;">
+        <button id="tour-ok" class="glossary-btn">閉じる</button>
+        <button id="tour-disable" class="glossary-btn" style="margin-left:.5rem;">自動表示しない</button>
+      </p>
+    </div>
+  </div>
+
+  <!-- 損益計算モーダル -->
+  <div id="calc-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="calc-close" class="modal-close">×</button>
+      <h2>簡易損益計算</h2>
+      <div class="calc-form">
+        <table style="width:100%;border-collapse:collapse;margin-bottom:1rem;">
+          <thead style="background:var(--accent);color:#fff;font-size:.9rem;">
+            <tr><th>種別</th><th>銘柄</th><th>数量</th><th>価格</th><th>通貨</th><th></th></tr></thead>
+          <tbody id="trade-rows"></tbody>
+        </table>
+        <button id="add-row" class="glossary-btn" type="button">＋行追加</button>
+        <button id="calc-run" class="glossary-btn" style="margin-left:.5rem;">計算</button>
+      </div>
+      <div id="calc-result" style="margin-top:1rem;"></div>
+    </div>
+  </div>
+
+  <div id="quiz-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="quiz-close" class="modal-close">×</button>
+      <h2>用語クイズ</h2>
+      <p id="quiz-question"></p>
+      <div id="quiz-options" style="margin-top:1rem;"></div>
+      <p id="quiz-score" style="margin-top:1rem;"></p>
+    </div>
+  </div>
+
+</footer>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="modal-close" class="modal-close">×</button>
+      <h2 id="modal-title"></h2>
+      <p id="modal-body"></p>
+    </div>
+  </div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
