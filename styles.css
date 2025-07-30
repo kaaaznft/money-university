@@ -1040,6 +1040,9 @@ select:focus,
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
 }
 
 .modal-header h2 {
@@ -2053,11 +2056,12 @@ select:focus,
 }
 
 .income-type-modal {
-    background-color: #f8f9fa;
+    background-color: white;
     padding: 1.2rem;
     border-radius: 8px;
     border-left: 4px solid #228B22;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #eee;
 }
 
 .income-type-modal:hover {
@@ -2817,13 +2821,19 @@ select:focus,
     }
     
     .modal-section li {
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.5rem;
         text-align: left;
+        padding-left: 0;
+        margin-left: 0;
     }
     
     .modal-section li::before {
         align-self: flex-start;
+        margin-left: 0;
+        flex-shrink: 0;
+        width: 20px;
+        text-align: center;
     }
 }
 

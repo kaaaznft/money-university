@@ -1208,14 +1208,16 @@ function showCurrencyModal(currency) {
     });
     
     // Show modal
-    modal.classList.add('show');
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
 }
 
 function closeCurrencyModal() {
     const modal = document.getElementById('currency-modal');
-    modal.classList.remove('show');
-    document.body.style.overflow = 'auto'; // Restore scrolling
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
 }
 
 // Glossary Data and Management
@@ -1718,7 +1720,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Close modal with Escape key
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('show')) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
             closeCurrencyModal();
         }
     });
