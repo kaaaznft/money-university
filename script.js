@@ -610,8 +610,9 @@ function getFallbackExchangeRate(fromCurrency, toCurrency) {
     return fallbackRates[fromCurrency] && fallbackRates[fromCurrency][toCurrency] ? fallbackRates[fromCurrency][toCurrency] : null;
 }
 
-// Quiz System
+// Quiz System - Questions from site content
 const quizQuestions = [
+    // Tax questions
     {
         question: "日本の消費税率は何%でしょうか？",
         options: [8, 10, 12, 15],
@@ -625,10 +626,30 @@ const quizQuestions = [
         explanation: "所得税は累進税率を採用しており、所得が高いほど税率が高くなります。"
     },
     {
+        question: "住民税の税率は所得に関係なく一定額ですか？",
+        options: ["はい", "いいえ", "一部のみ", "地域による"],
+        correct: 2,
+        explanation: "住民税は所得割（所得に比例）と均等割（定額）で構成されています。"
+    },
+    {
+        question: "社会保険料に含まれないものはどれでしょうか？",
+        options: ["健康保険", "厚生年金", "雇用保険", "所得税"],
+        correct: 3,
+        explanation: "所得税は国税であり、社会保険料ではありません。"
+    },
+    
+    // Currency questions
+    {
         question: "為替レートが「1ドル＝150円」の時、100ドルは何円でしょうか？",
         options: ["1,500円", "15,000円", "150円", "1,50円"],
         correct: 1,
         explanation: "100ドル × 150円/ドル = 15,000円になります。"
+    },
+    {
+        question: "通貨の3つの基本機能に含まれないものはどれでしょうか？",
+        options: ["交換手段", "価値尺度", "価値保存", "投資手段"],
+        correct: 3,
+        explanation: "通貨の基本機能は交換手段・価値尺度・価値保存の3つです。"
     },
     {
         question: "中央銀行の主な役割として正しくないものはどれでしょうか？",
@@ -641,15 +662,133 @@ const quizQuestions = [
         options: ["物価が下がること", "物価が上がること", "金利が上がること", "為替が変動すること"],
         correct: 1,
         explanation: "インフレーションとは継続的に物価が上昇する現象のことです。"
+    },
+    
+    // Investment questions
+    {
+        question: "分散投資の主な目的は何でしょうか？",
+        options: ["利益を最大化する", "リスクを分散する", "手数料を削減する", "税金を節約する"],
+        correct: 1,
+        explanation: "分散投資の主な目的はリスクを分散し、一つの投資先の影響を軽減することです。"
+    },
+    {
+        question: "NISAの正式名称は何でしょうか？",
+        options: ["日本投資制度", "少額投資非課税制度", "新投資優遇制度", "非課税投資口座"],
+        correct: 1,
+        explanation: "NISAは「少額投資非課税制度」の略称です。"
+    },
+    {
+        question: "株式の配当金に対する税率はいくらでしょうか？",
+        options: ["10%", "15%", "20.315%", "25%"],
+        correct: 2,
+        explanation: "株式の配当金には20.315%（所得税15.315%＋住民税5%）の税金がかかります。"
+    },
+    {
+        question: "複利効果とは何でしょうか？",
+        options: ["利息に利息がつく効果", "税金が複雑になる効果", "投資が複数になる効果", "リスクが複合する効果"],
+        correct: 0,
+        explanation: "複利効果とは、元本につく利息がさらに利息を生む効果のことです。"
+    },
+    
+    // Cryptocurrency questions
+    {
+        question: "ビットコインの発行上限は何BTCでしょうか？",
+        options: ["1,000万BTC", "2,100万BTC", "5,000万BTC", "無制限"],
+        correct: 1,
+        explanation: "ビットコインの発行上限は2,100万BTCと設定されています。"
+    },
+    {
+        question: "ブロックチェーンの特徴として正しくないものはどれでしょうか？",
+        options: ["分散型", "透明性", "改ざん困難", "中央管理"],
+        correct: 3,
+        explanation: "ブロックチェーンは分散型システムで、中央管理機関は存在しません。"
+    },
+    {
+        question: "DeFiは何の略でしょうか？",
+        options: ["Digital Finance", "Decentralized Finance", "Distributed Finance", "Dynamic Finance"],
+        correct: 1,
+        explanation: "DeFiはDecentralized Finance（分散型金融）の略です。"
+    },
+    
+    // General finance questions
+    {
+        question: "金利が上がると一般的に何が起こるでしょうか？",
+        options: ["インフレが加速", "円安が進行", "借り入れコストが上昇", "株価が必ず上がる"],
+        correct: 2,
+        explanation: "金利が上がると借り入れコストが上昇し、経済活動に影響を与えます。"
+    },
+    {
+        question: "日本の年金制度の3階建て構造で1階部分はどれでしょうか？",
+        options: ["厚生年金", "国民年金", "企業年金", "個人年金"],
+        correct: 1,
+        explanation: "日本の年金制度の1階部分は国民年金（基礎年金）です。"
+    },
+    {
+        question: "家計の黄金比率で貯蓄の理想的な割合は収入の何%でしょうか？",
+        options: ["10%", "20%", "30%", "40%"],
+        correct: 1,
+        explanation: "一般的に収入の20%を貯蓄に回すのが理想的とされています。"
     }
 ];
 
 let currentQuestion = 0;
 let score = 0;
 let answered = false;
+let shuffledQuestions = [];
+let usedQuestions = [];
+const maxQuizQuestions = 10;
+
+// Initialize quiz with random questions
+function initializeQuiz() {
+    shuffledQuestions = [];
+    usedQuestions = [];
+    currentQuestion = 0;
+    score = 0;
+    
+    // Create a pool of all available questions
+    const availableQuestions = [...quizQuestions];
+    
+    // Randomly select questions for the quiz
+    for (let i = 0; i < maxQuizQuestions && availableQuestions.length > 0; i++) {
+        let selectedIndex;
+        let attempts = 0;
+        
+        // Try to avoid consecutive similar questions
+        do {
+            selectedIndex = Math.floor(Math.random() * availableQuestions.length);
+            attempts++;
+        } while (attempts < 10 && isQuestionTooSimilar(availableQuestions[selectedIndex]));
+        
+        const selectedQuestion = availableQuestions.splice(selectedIndex, 1)[0];
+        shuffledQuestions.push(selectedQuestion);
+        usedQuestions.push(selectedQuestion);
+    }
+}
+
+// Check if question is too similar to recent questions
+function isQuestionTooSimilar(question) {
+    if (usedQuestions.length < 2) return false;
+    
+    const recentQuestions = usedQuestions.slice(-2);
+    return recentQuestions.some(recentQ => {
+        // Check if questions are from the same category or have similar keywords
+        const questionWords = question.question.toLowerCase().split(/\s+/);
+        const recentWords = recentQ.question.toLowerCase().split(/\s+/);
+        
+        const commonWords = questionWords.filter(word => 
+            recentWords.includes(word) && word.length > 2
+        );
+        
+        return commonWords.length >= 2;
+    });
+}
 
 function displayQuestion() {
-    const question = quizQuestions[currentQuestion];
+    if (shuffledQuestions.length === 0) {
+        initializeQuiz();
+    }
+    
+    const question = shuffledQuestions[currentQuestion];
     const questionDiv = document.getElementById('quiz-question');
     
     let optionsHtml = '';
@@ -673,7 +812,7 @@ function displayQuestion() {
 function selectAnswer(questionIndex, selectedIndex) {
     if (answered) return;
     
-    const question = quizQuestions[questionIndex];
+    const question = shuffledQuestions[currentQuestion];
     const options = document.querySelectorAll('.quiz-option');
     const resultDiv = document.getElementById('quiz-result');
     
@@ -710,7 +849,7 @@ function selectAnswer(questionIndex, selectedIndex) {
     document.getElementById('score').textContent = score;
     
     // 次の質問ボタンまたは結果表示
-    if (currentQuestion < quizQuestions.length - 1) {
+    if (currentQuestion < maxQuizQuestions - 1) {
         document.getElementById('next-question').style.display = 'inline-block';
     } else {
         showFinalScore();
@@ -723,7 +862,7 @@ function nextQuestion() {
 }
 
 function showFinalScore() {
-    const percentage = Math.round((score / quizQuestions.length) * 100);
+    const percentage = Math.round((score / maxQuizQuestions) * 100);
     let message = '';
     
     if (percentage >= 80) {
@@ -737,7 +876,7 @@ function showFinalScore() {
     document.getElementById('quiz-result').innerHTML = `
         <div style="text-align: center; padding: 1rem;">
             <h3>クイズ完了！</h3>
-            <p>スコア: ${score} / ${quizQuestions.length} (${percentage}%)</p>
+            <p>スコア: ${score} / ${maxQuizQuestions} (${percentage}%)</p>
             <p>${message}</p>
         </div>
     `;
@@ -746,8 +885,7 @@ function showFinalScore() {
 }
 
 function restartQuiz() {
-    currentQuestion = 0;
-    score = 0;
+    initializeQuiz();
     answered = false;
     document.getElementById('score').textContent = score;
     displayQuestion();
@@ -1857,9 +1995,7 @@ async function loadExchangeRatesDashboard() {
                 <div class="rates-grid">
                     <div class="rates-header">
                         <div class="header-cell">通貨</div>
-                        <div class="header-cell">100JPY</div>
-                        <div class="header-cell">1,000JPY</div>
-                        <div class="header-cell">10,000JPY</div>
+                        <div class="header-cell">100円</div>
                     </div>
             `;
             
@@ -1867,8 +2003,6 @@ async function loadExchangeRatesDashboard() {
                 const rate = rates[currency.code];
                 if (rate) {
                     const rate100 = rate * 100;
-                    const rate1000 = rate * 1000;
-                    const rate10000 = rate * 10000;
                     const symbol = getCurrencySymbol(currency.code);
                     
                     tableHTML += `
@@ -1880,14 +2014,8 @@ async function loadExchangeRatesDashboard() {
                                     <div class="currency-code">${currency.code}</div>
                                 </div>
                             </div>
-                            <div class="rate-cell">
-                                ${symbol}${rate100.toFixed(rate100 < 1 ? 4 : 2)}
-                            </div>
-                            <div class="rate-cell">
-                                ${symbol}${rate1000.toFixed(rate1000 < 1 ? 4 : 2)}
-                            </div>
                             <div class="rate-cell highlight">
-                                ${symbol}${rate10000.toFixed(rate10000 < 1 ? 2 : 0)}
+                                ${symbol}${rate100.toFixed(rate100 < 1 ? 4 : 2)}
                             </div>
                         </div>
                     `;
