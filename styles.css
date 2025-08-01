@@ -84,51 +84,12 @@ body {
     border-radius: 1px;
 }
 
-.target-toggle-container {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    margin-right: 1rem;
-}
 
-.target-toggle {
-    background: rgba(40, 167, 69, 0.1);
-    border: 2px solid #28a745;
-    border-radius: 25px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #28a745;
-}
 
-.target-toggle:hover {
-    background: rgba(40, 167, 69, 0.2);
-    transform: translateY(-1px);
-}
 
-.target-toggle.kids-mode {
-    background: rgba(255, 193, 7, 0.1);
-    border-color: #ffc107;
-    color: #ffc107;
-}
 
-.target-toggle.kids-mode:hover {
-    background: rgba(255, 193, 7, 0.2);
-}
 
-.toggle-icon {
-    font-size: 1rem;
-}
 
-.toggle-text {
-    font-size: 0.85rem;
-    white-space: nowrap;
-}
 
 .theme-toggle {
     background: none;
@@ -4602,25 +4563,9 @@ select:focus,
 }
 
 /* Dark mode for target toggle */
-[data-theme="dark"] .target-toggle {
-    background: rgba(40, 167, 69, 0.15);
-    border-color: var(--success-color);
-    color: var(--success-color);
-}
 
-[data-theme="dark"] .target-toggle:hover {
-    background: rgba(40, 167, 69, 0.25);
-}
 
-[data-theme="dark"] .target-toggle.kids-mode {
-    background: rgba(255, 193, 7, 0.15);
-    border-color: #ffc107;
-    color: #ffc107;
-}
 
-[data-theme="dark"] .target-toggle.kids-mode:hover {
-    background: rgba(255, 193, 7, 0.25);
-}
 
 /* Responsive Design for Crypto Modal */
 @media (max-width: 768px) {
@@ -4667,21 +4612,4 @@ select:focus,
         font-size: 0.9rem;
     }
     
-    .target-toggle-container {
-        margin-left: auto;
-        margin-right: 0.5rem;
-    }
-    
-    .target-toggle {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-    }
-    
-    .toggle-text {
-        font-size: 0.75rem;
-    }
-    
-    .toggle-icon {
-        font-size: 0.9rem;
-    }
 }
