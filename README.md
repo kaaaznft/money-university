@@ -20,13 +20,14 @@ A comprehensive financial education platform designed to help Japanese speakers 
 
 ### Educational Features
 - **🧠 Interactive Quizzes** - Test your financial knowledge
+- **👥 Kids/Adults Toggle** - Switch between child-friendly and advanced terminology
 - **🌙 Dark Mode Support** - Comfortable viewing in any lighting
 - **📱 Responsive Design** - Optimized for all devices
 - **🎯 Personalized Learning** - Filter content by topic
 
 ## 🚀 Live Demo
 
-Visit the website: [money-university.netlify.app](https://money-university.netlify.app) *(Deploy your own)*
+Visit the website: [https://kaaaznft.github.io/money-university/](https://kaaaznft.github.io/money-university/)
 
 ## 🛠️ Technology Stack
 
@@ -45,7 +46,9 @@ Visit the website: [money-university.netlify.app](https://money-university.netli
 
 ## 🎯 Target Audience
 
-- Japanese-speaking individuals interested in financial literacy
+- **Adults**: Japanese-speaking individuals interested in financial literacy and advanced financial concepts
+- **Children/Students**: Middle school students (ages 12+) learning basic money management through simplified terminology
+- **Target Toggle**: Switch between adult and child-friendly language modes for age-appropriate learning
 - Beginners looking to understand investment basics
 - Students learning about the Japanese tax system
 - Anyone wanting to track real-time financial data

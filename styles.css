@@ -87,6 +87,7 @@ body {
 .target-toggle-container {
     display: flex;
     align-items: center;
+    margin-left: auto;
     margin-right: 1rem;
 }
 
@@ -4667,6 +4668,7 @@ select:focus,
     }
     
     .target-toggle-container {
+        margin-left: auto;
         margin-right: 0.5rem;
     }
     
